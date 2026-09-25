@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lecturas del Día ✝️</title>
+<title>Lecturas del Día ✝️ | Parroquia Monte Tabor</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -38,15 +38,102 @@
     50% { opacity: 0.6; }
   }
 
+  /* ===== HEADER CON LOGO A UN LADO ===== */
   header {
     position: relative;
     z-index: 2;
-    text-align: center;
-    padding: 50px 20px 30px;
+    padding: 40px 30px 20px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .header-grid {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 30px;
+    align-items: center;
+    animation: fadeIn 1.2s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Contenedor del logo */
+  .logo-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  /* Halo dorado de fondo */
+  .logo-container::before {
+    content: '';
+    position: absolute;
+    inset: -20px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 215, 0, 0.35) 0%, rgba(255, 215, 0, 0.1) 40%, transparent 70%);
+    animation: haloPulso 3.5s ease-in-out infinite;
+    z-index: -1;
+  }
+
+  @keyframes haloPulso {
+    0%, 100% { transform: scale(1); opacity: 0.7; }
+    50% { transform: scale(1.15); opacity: 1; }
+  }
+
+  /* Imagen del logo con mezcla de fondo */
+  .logo-parroquia {
+    width: 170px;
+    height: 170px;
+    object-fit: contain;
+    /* MODO DE MEZCLA: integra el logo con el fondo oscuro */
+    mix-blend-mode: screen;
+    filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.5));
+    transition: transform 0.5s ease, filter 0.5s ease;
+  }
+
+  .logo-parroquia:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 25px rgba(255, 215, 0, 0.9));
+  }
+
+  /* Bloque de texto a la derecha */
+  .header-texto {
+    text-align: left;
+  }
+
+  .nombre-parroquia {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #ffd700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+    margin-bottom: 5px;
+  }
+
+  .lema-parroquia {
+    font-family: 'Great Vibes', cursive;
+    font-size: 1.5rem;
+    color: #a0d8ff;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px rgba(160, 216, 255, 0.4);
+  }
+
+  .cruz-titulo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
   }
 
   .cruz {
-    font-size: 3rem;
+    font-size: 1.8rem;
     color: #ffd700;
     text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
     animation: glow 2s ease-in-out infinite alternate;
@@ -59,25 +146,26 @@
 
   .titulo {
     font-family: 'Great Vibes', cursive;
-    font-size: 3.5rem;
+    font-size: 3rem;
     color: #ffd700;
-    margin: 10px 0;
     text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+    line-height: 1;
   }
 
   .fecha {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: #e0e0e0;
     font-style: italic;
     letter-spacing: 1px;
+    margin-top: 8px;
   }
 
   .linea-decorativa {
-    width: 120px;
+    width: 150px;
     height: 2px;
-    background: linear-gradient(to right, transparent, #ffd700, transparent);
-    margin: 20px auto;
+    background: linear-gradient(to right, #ffd700, transparent);
+    margin: 20px 0 30px;
   }
 
   .container {
@@ -85,7 +173,7 @@
     z-index: 2;
     max-width: 800px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 0 20px 20px;
   }
 
   .lectura {
@@ -210,9 +298,57 @@
     color: #ffd700;
   }
 
-  @media (max-width: 600px) {
-    .titulo { font-size: 2.5rem; }
-    .cruz { font-size: 2.3rem; }
+  footer .parroquia-footer {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    color: #ffd700;
+    font-style: italic;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+  }
+
+  .loading {
+    text-align: center;
+    padding: 60px 20px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .spinner {
+    width: 50px;
+    height: 50px;
+    border: 3px solid rgba(255, 215, 0, 0.2);
+    border-top-color: #ffd700;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 20px;
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+
+  .loading p {
+    color: #ffd700;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-style: italic;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 700px) {
+    .header-grid {
+      grid-template-columns: 1fr;
+      gap: 15px;
+      text-align: center;
+    }
+    .header-texto { text-align: center; }
+    .cruz-titulo { justify-content: center; }
+    .linea-decorativa { margin: 20px auto 30px; }
+    .logo-parroquia { width: 140px; height: 140px; }
+    .titulo { font-size: 2.4rem; }
+    .nombre-parroquia { font-size: 1rem; letter-spacing: 2px; }
+    .lema-parroquia { font-size: 1.3rem; }
     .lectura { padding: 22px 18px; }
     .lectura-titulo { font-size: 1.5rem; }
     .lectura-texto { font-size: 1.1rem; }
@@ -222,62 +358,54 @@
 <body>
 
 <header>
-  <div class="cruz">✝</div>
-  <h1 class="titulo">Lecturas del Día</h1>
+  <div class="header-grid">
+    <!-- LOGO A LA IZQUIERDA -->
+    <div class="logo-container">
+      <img
+        src="https://i.imgur.com/b4BdXzJ.png"
+        alt="Logo Parroquia Monte Tabor - Pastoral Familiar"
+        class="logo-parroquia"
+        onerror="this.src='https://i.imgur.com/b4BdXzJ.jpg'; this.onerror=null;"
+      >
+    </div>
+
+    <!-- TEXTO A LA DERECHA -->
+    <div class="header-texto">
+      <div class="nombre-parroquia">Parroquia Monte Tabor</div>
+      <div class="lema-parroquia">Pastoral Familiar</div>
+      <div class="cruz-titulo">
+        <span class="cruz">✝</span>
+        <h1 class="titulo">Lecturas del Día</h1>
+      </div>
+      <p class="fecha" id="fecha"></p>
+    </div>
+  </div>
   <div class="linea-decorativa"></div>
-  <p class="fecha">Sábado, 26 de Septiembre de 2026</p>
 </header>
 
-<div class="container">
+<div class="loading" id="loading">
+  <div class="spinner"></div>
+  <p>Cargando la Palabra de Dios...</p>
+</div>
 
-  <!-- PRIMERA LECTURA -->
+<div class="container" id="contenido" style="display:none;">
+
   <section class="lectura" id="lectura1">
     <h2 class="lectura-titulo"><span class="icono">📖</span> Primera Lectura</h2>
-    <p class="lectura-referencia">Eclesiastés 11, 9 — 12, 8</p>
-    <div class="lectura-texto">
-      <p>Alégrate, muchacho, mientras eres joven, y que tu corazón sea feliz en tus años juveniles. Sigue los impulsos de tu corazón y lo que es un incentivo para tus ojos; pero ten presente que por todo eso Dios te llamará a juicio. Aparta de tu corazón la tristeza y aleja de tu carne el dolor, porque la juventud y la aurora de la vida pasan fugazmente.</p>
-      <p>Acuérdate de tu Creador en los días de tu juventud, antes que lleguen los días penosos y vengan los años en los que dirás: "No encuentro en ellos ningún placer"; antes que se oscurezcan el sol y la luz, la luna y las estrellas, y vuelvan las nubes cargadas de lluvia.</p>
-      <p>En aquel día temblarán los guardianes de la casa y se encorvarán los hombres vigorosos; se detendrán las moledoras, que ya serán pocas, y se oscurecerán las que miran por las ventanas; se cerrarán las puertas de la calle, mientras declina el ruido del molino; cesará el canto de los pájaros y enmudecerán las que entonan canciones.</p>
-      <p>Entonces se temerán las cuestas empinadas y los terrores acecharán por el camino. El almendro estará florecido, se pondrá pesada la langosta y la alcaparra perderá su eficacia. Porque el hombre se va a su morada eterna, mientras las plañideras rondan por la calle.</p>
-      <p>Sí, acuérdate de Él antes que se corte la hebra de plata y se quiebre la ampolla de oro, antes que se haga pedazos el cántaro en la fuente y se rompa la cuerda del aljibe; antes que el polvo vuelva a la tierra, como lo que es, y el aliento vuelva a Dios, porque es Él quien lo dio. ¡Vanidad, pura vanidad!, dice Cohélet. ¡Nada más que vanidad!</p>
-      <p><strong>Palabra de Dios.</strong></p>
-    </div>
+    <p class="lectura-referencia" id="ref1">—</p>
+    <div class="lectura-texto" id="texto1"></div>
   </section>
 
-  <!-- SALMO -->
   <section class="lectura" id="salmo">
     <h2 class="lectura-titulo"><span class="icono">🎵</span> Salmo Responsorial</h2>
-    <p class="lectura-referencia">Salmo 89, 3-6. 12-14. 17</p>
-    <div class="lectura-texto">
-      <span class="salmo-respuesta">R. ¡Tú has sido nuestro refugio, Señor!</span>
-      
-      <div class="salmo-estrofa">
-        <p>Tú haces que los hombres vuelvan al polvo, con sólo decirles: "Vuelvan, seres humanos". Porque mil años son ante tus ojos como el día de ayer, que ya pasó, como una vigilia de la noche. <strong>R.</strong></p>
-      </div>
-      
-      <div class="salmo-estrofa">
-        <p>Tú los arrebatas, y son como un sueño, como la hierba que brota de mañana: por la mañana brota y florece, y por la tarde se seca y se marchita. <strong>R.</strong></p>
-      </div>
-      
-      <div class="salmo-estrofa">
-        <p>Enséñanos a calcular nuestros años, para que nuestro corazón alcance la sabiduría. ¡Vuélvete, Señor! ¿Hasta cuándo...? Ten compasión de tus servidores. <strong>R.</strong></p>
-      </div>
-      
-      <div class="salmo-estrofa">
-        <p>Sácianos enseguida con tu amor, y cantaremos felices toda nuestra vida. Que descienda hasta nosotros la bondad del Señor; que el Señor, nuestro Dios, haga prosperar la obra de nuestras manos. <strong>R.</strong></p>
-      </div>
-    </div>
+    <p class="lectura-referencia" id="refSalmo">—</p>
+    <div class="lectura-texto" id="textoSalmo"></div>
   </section>
 
-  <!-- EVANGELIO -->
   <section class="lectura evangelio" id="evangelio">
     <h2 class="lectura-titulo"><span class="icono">✨</span> Evangelio</h2>
-    <p class="lectura-referencia">Lucas 9, 43b-45</p>
-    <div class="lectura-texto">
-      <p>Mientras todos se admiraban por las cosas que hacía, Jesús dijo a sus discípulos: "Escuchen bien esto que les digo: El Hijo del hombre va a ser entregado en manos de los hombres".</p>
-      <p>Pero ellos no entendían estas palabras: su sentido les resultaba oscuro, de manera que no podían comprenderlas, y temían interrogar a Jesús acerca de esto.</p>
-      <p><strong>Palabra del Señor.</strong></p>
-    </div>
+    <p class="lectura-referencia" id="refEvangelio">—</p>
+    <div class="lectura-texto" id="textoEvangelio"></div>
   </section>
 
   <div class="compartir">
@@ -287,22 +415,125 @@
 </div>
 
 <footer>
-  Hecho con <span class="corazon">♥</span> para la gloria de Dios
+  <div class="parroquia-footer">Parroquia Monte Tabor · Pastoral Familiar</div>
+  <div>Con Jesús, José y María, vivimos nuestra alegría ✨</div>
+  <div style="margin-top:10px;">Hecho con <span class="corazon">♥</span> para la gloria de Dios</div>
 </footer>
 
 <script>
-  // Animar las tarjetas al cargar
-  window.addEventListener('load', () => {
+  const API_URL = 'https://liturgia.cloudhub.ia.br/v1/liturgia';
+
+  const respaldo = {
+    primera: {
+      referencia: "Isaías 55, 1-3",
+      texto: `<p>Esto dice el Señor: «Todos ustedes, los que tienen sed, vengan por agua; y los que no tienen dinero, vengan, tomen trigo y coman; vengan, tomen vino y leche, sin pagar nada.</p>
+              <p>¿Por qué gastar dinero en lo que no alimenta y el salario en lo que no sacia? Escúchenme atentos y comerán bien, saborearán platillos suculentos.</p>
+              <p>Presten oído y vengan a mí, escúchenme y vivirán. Haré con ustedes una alianza eterna, cumpliendo las promesas que hice a David».</p>`
+    },
+    salmo: {
+      referencia: "Salmo 144",
+      texto: `<div class="salmo-estrofa">
+                <span class="salmo-respuesta">R. El Señor es compasivo y misericordioso.</span>
+                <p>El Señor es compasivo y misericordioso, lento a la ira y rico en clemencia. El Señor es bueno con todos, es cariñoso con todas sus creaturas.</p>
+              </div>
+              <div class="salmo-estrofa">
+                <span class="salmo-respuesta">R. El Señor es compasivo y misericordioso.</span>
+                <p>Que todas tus creaturas te den gracias, Señor, que te bendigan tus fieles; que proclamen la gloria de tu reinado y den a conocer tus maravillas.</p>
+              </div>`
+    },
+    evangelio: {
+      referencia: "Mateo 14, 13-21",
+      texto: `<p>En aquel tiempo, cuando Jesús oyó que Juan el Bautista había muerto, se fue de allí en una barca, a un lugar solitario y apartado. Al enterarse las gentes, lo siguieron a pie desde las ciudades.</p>
+              <p>Al desembarcar, Jesús vio una multitud, se compadeció de ella y curó a los enfermos. Cuando se hizo tarde, se acercaron sus discípulos a decirle: «Estamos en despoblado y ya es muy tarde. Despide a la gente, para que vayan a los caseríos y compren algo de comer».</p>
+              <p>Jesús les respondió: «No es necesario que se vayan; denles ustedes de comer». Ellos le contestaron: «No tenemos aquí más que cinco panes y dos pescados».</p>
+              <p>Él les dijo: «Tráiganmelos». Luego mandó a la gente que se sentara en la hierba. Tomó los cinco panes y los dos pescados, levantó los ojos al cielo, pronunció la bendición, partió los panes y los dio a los discípulos; y los discípulos, a la gente. Todos comieron hasta saciarse, y con los pedazos que sobraron se llenaron doce canastas.</p>
+              <p><strong>Palabra del Señor. R. Gloria a ti, Señor Jesús.</strong></p>`
+    }
+  };
+
+  const hoy = new Date();
+  const opciones = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+  const fechaTexto = hoy.toLocaleDateString('es-ES', opciones);
+  document.getElementById('fecha').textContent = fechaTexto.charAt(0).toUpperCase() + fechaTexto.slice(1);
+
+  async function cargarLecturas() {
+    try {
+      const respuesta = await fetch(API_URL);
+      if (!respuesta.ok) throw new Error('API no disponible');
+      const data = await respuesta.json();
+      mostrarLecturas(data);
+    } catch (error) {
+      console.warn('API no disponible, usando respaldo.');
+      mostrarLecturas(respaldo);
+    }
+  }
+
+  function mostrarLecturas(data) {
+    document.getElementById('loading').style.display = 'none';
+    document.getElementById('contenido').style.display = 'block';
+
+    let primera, salmo, evangelio;
+
+    if (data.leituras) {
+      primera = {
+        referencia: data.leituras.primeiraLeitura?.referencia || '—',
+        texto: convertirTexto(data.leituras.primeiraLeitura?.texto || '')
+      };
+      salmo = {
+        referencia: data.leituras.salmo?.referencia || '—',
+        texto: convertirSalmo(data.leituras.salmo)
+      };
+      evangelio = {
+        referencia: data.leituras.evangelho?.referencia || '—',
+        texto: convertirTexto(data.leituras.evangelho?.texto || '')
+      };
+    } else {
+      primera = data.primera;
+      salmo = data.salmo;
+      evangelio = data.evangelio;
+    }
+
+    document.getElementById('ref1').textContent = primera.referencia;
+    document.getElementById('texto1').innerHTML = primera.texto;
+    document.getElementById('refSalmo').textContent = salmo.referencia;
+    document.getElementById('textoSalmo').innerHTML = salmo.texto;
+    document.getElementById('refEvangelio').textContent = evangelio.referencia;
+    document.getElementById('textoEvangelio').innerHTML = evangelio.texto;
+
     setTimeout(() => {
       document.querySelectorAll('.lectura').forEach(el => el.classList.add('visible'));
-    }, 200);
-  });
+    }, 100);
+  }
 
-  // Compartir
+  function convertirTexto(texto) {
+    if (!texto) return '<p>—</p>';
+    return texto
+      .split(/\n\s*\n|\n/)
+      .filter(p => p.trim())
+      .map(p => `<p>${p.trim()}</p>`)
+      .join('');
+  }
+
+  function convertirSalmo(salmo) {
+    if (!salmo) return '<p>—</p>';
+    let html = '';
+    if (salmo.resposta) {
+      html += `<span class="salmo-respuesta">R. ${salmo.resposta}</span>`;
+    }
+    if (salmo.estrofe && Array.isArray(salmo.estrofe)) {
+      salmo.estrofe.forEach(estrofa => {
+        html += `<div class="salmo-estrofa"><p>${estrofa}</p></div>`;
+      });
+    } else if (salmo.texto) {
+      html += convertirTexto(salmo.texto);
+    }
+    return html || '<p>—</p>';
+  }
+
   function compartir() {
     if (navigator.share) {
       navigator.share({
-        title: 'Lecturas del Día ✝️',
+        title: 'Lecturas del Día ✝️ | Parroquia Monte Tabor',
         text: 'Comparte la Palabra de Dios 🙏',
         url: window.location.href
       });
@@ -311,6 +542,8 @@
       alert('¡Enlace copiado! Compártelo con tus hermanos 🙏');
     }
   }
+
+  cargarLecturas();
 </script>
 
 </body>
