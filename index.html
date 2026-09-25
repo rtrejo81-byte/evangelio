@@ -2,605 +2,2102 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+
 <meta name="theme-color" content="#1a1a2e">
+
+<meta name="description"
+      content="Lecturas del Día - Parroquia Monte Tabor - Pastoral Familiar">
+
 <title>Lecturas del Día ✝️ | Parroquia Monte Tabor</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<!-- PWA -->
+<link rel="manifest" href="manifest.json">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Lecturas del Día">
+
+<!-- Fuentes -->
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Great+Vibes&family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet">
+
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
 
-  html { -webkit-text-size-adjust: 100%; }
+/* =========================================================
+   RESET
+========================================================= */
 
-  body {
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+}
+
+body {
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    background:
+        linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
     min-height: 100vh;
     color: #fff;
     overflow-x: hidden;
     position: relative;
-  }
+    padding-bottom: 80px;
+}
 
-  body::before {
+/* =========================================================
+   FONDO ESTRELLADO
+========================================================= */
+
+body::before {
     content: '';
     position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
+    inset: 0;
+
     background-image:
-      radial-gradient(2px 2px at 20px 30px, #fff, transparent),
-      radial-gradient(1px 1px at 90px 70px, #ffd700, transparent),
-      radial-gradient(1.5px 1.5px at 150px 120px, #fff, transparent),
-      radial-gradient(1px 1px at 250px 50px, #fff, transparent),
-      radial-gradient(2px 2px at 350px 200px, #ffd700, transparent);
+        radial-gradient(2px 2px at 20px 30px, #fff, transparent),
+        radial-gradient(1px 1px at 90px 70px, #ffd700, transparent),
+        radial-gradient(1.5px 1.5px at 150px 120px, #fff, transparent),
+        radial-gradient(1px 1px at 250px 50px, #fff, transparent),
+        radial-gradient(2px 2px at 350px 200px, #ffd700, transparent);
+
     background-size: 400px 400px;
     opacity: 0.4;
     animation: twinkle 6s ease-in-out infinite;
+
     z-index: 0;
     pointer-events: none;
-  }
+}
 
-  @keyframes twinkle {
-    0%, 100% { opacity: 0.3; }
-    50% { opacity: 0.6; }
-  }
+@keyframes twinkle {
 
-  header {
+    0%, 100% {
+        opacity: 0.3;
+    }
+
+    50% {
+        opacity: 0.6;
+    }
+}
+
+/* =========================================================
+   MODO LECTURA
+========================================================= */
+
+body.modo-lectura {
+    background: #f7f4ed;
+    color: #222;
+}
+
+body.modo-lectura::before {
+    display: none;
+}
+
+body.modo-lectura .lectura {
+    background: #fff;
+    color: #222;
+    border-color: #ddd;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+body.modo-lectura .lectura-texto {
+    color: #333;
+}
+
+body.modo-lectura .fecha,
+body.modo-lectura footer {
+    color: #666;
+}
+
+body.modo-lectura .top-bar {
+    background: rgba(255,255,255,0.96);
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+header {
     position: relative;
     z-index: 2;
     padding: 30px 20px 10px;
     max-width: 900px;
     margin: 0 auto;
-  }
+}
 
-  .header-grid {
+.header-grid {
     display: grid;
     grid-template-columns: auto 1fr;
     gap: 30px;
     align-items: center;
+
     animation: fadeIn 1.2s ease-out;
-  }
+}
 
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+@keyframes fadeIn {
 
-  .logo-container {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.logo-container {
     position: relative;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-shrink: 0;
-  }
 
-  .logo-container::before {
+    flex-shrink: 0;
+}
+
+.logo-container::before {
     content: '';
+
     position: absolute;
     inset: -20px;
+
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(255, 215, 0, 0.35) 0%, rgba(255, 215, 0, 0.1) 40%, transparent 70%);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,215,0,0.35) 0%,
+            rgba(255,215,0,0.1) 40%,
+            transparent 70%
+        );
+
     animation: haloPulso 3.5s ease-in-out infinite;
+
     z-index: -1;
-  }
+}
 
-  @keyframes haloPulso {
-    0%, 100% { transform: scale(1); opacity: 0.7; }
-    50% { transform: scale(1.15); opacity: 1; }
-  }
+@keyframes haloPulso {
 
-  .logo-parroquia {
+    0%, 100% {
+        transform: scale(1);
+        opacity: .7;
+    }
+
+    50% {
+        transform: scale(1.15);
+        opacity: 1;
+    }
+}
+
+.logo-parroquia {
     width: 170px;
     height: 170px;
+
     object-fit: contain;
+
     mix-blend-mode: screen;
-    filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.5));
-    transition: transform 0.5s ease, filter 0.5s ease;
-  }
 
-  .logo-parroquia:hover {
+    filter:
+        drop-shadow(0 0 15px rgba(255,215,0,.5));
+
+    transition: transform .5s ease;
+}
+
+.logo-parroquia:hover {
     transform: scale(1.05);
-    filter: drop-shadow(0 0 25px rgba(255, 215, 0, 0.9));
-  }
+}
 
-  .header-texto {
+/* =========================================================
+   TEXTO HEADER
+========================================================= */
+
+.header-texto {
     text-align: left;
-  }
+}
 
-  .nombre-parroquia {
+.nombre-parroquia {
     font-family: 'Cormorant Garamond', serif;
+
     font-size: 1.2rem;
     font-weight: 700;
+
     color: #ffd700;
+
     letter-spacing: 3px;
+
     text-transform: uppercase;
-    text-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+
+    text-shadow:
+        0 0 15px rgba(255,215,0,.5);
+
     margin-bottom: 5px;
-  }
+}
 
-  .lema-parroquia {
+.lema-parroquia {
     font-family: 'Great Vibes', cursive;
-    font-size: 1.5rem;
-    color: #a0d8ff;
-    margin-bottom: 20px;
-    text-shadow: 0 0 10px rgba(160, 216, 255, 0.4);
-  }
 
-  .cruz-titulo {
+    font-size: 1.5rem;
+
+    color: #a0d8ff;
+
+    margin-bottom: 20px;
+
+    text-shadow:
+        0 0 10px rgba(160,216,255,.4);
+}
+
+.cruz-titulo {
     display: flex;
     align-items: center;
-    gap: 12px;
-    margin-bottom: 10px;
-  }
 
-  .cruz {
+    gap: 12px;
+
+    margin-bottom: 10px;
+}
+
+.cruz {
     font-size: 1.8rem;
     color: #ffd700;
-    text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
-    animation: glow 2s ease-in-out infinite alternate;
-  }
 
-  @keyframes glow {
-    from { text-shadow: 0 0 10px rgba(255, 215, 0, 0.5); }
-    to { text-shadow: 0 0 30px rgba(255, 215, 0, 1), 0 0 40px rgba(255, 215, 0, 0.6); }
-  }
+    text-shadow:
+        0 0 20px rgba(255,215,0,.8);
 
-  .titulo {
+    animation:
+        glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+
+    from {
+        text-shadow:
+            0 0 10px rgba(255,215,0,.5);
+    }
+
+    to {
+        text-shadow:
+            0 0 30px rgba(255,215,0,1),
+            0 0 40px rgba(255,215,0,.6);
+    }
+}
+
+.titulo {
     font-family: 'Great Vibes', cursive;
+
     font-size: 3rem;
+
     color: #ffd700;
-    text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+
+    text-shadow:
+        2px 2px 8px rgba(0,0,0,.6);
+
     line-height: 1;
-  }
+}
 
-  .fecha {
+.fecha {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.1rem;
-    color: #e0e0e0;
-    font-style: italic;
-    letter-spacing: 1px;
-    margin-top: 8px;
-  }
 
-  .linea-decorativa {
+    font-size: 1.1rem;
+
+    color: #e0e0e0;
+
+    font-style: italic;
+
+    letter-spacing: 1px;
+
+    margin-top: 8px;
+}
+
+.linea-decorativa {
     width: 150px;
     height: 2px;
-    background: linear-gradient(to right, #ffd700, transparent);
-    margin: 20px 0 30px;
-  }
 
-  .container {
-    position: relative;
-    z-index: 2;
-    max-width: 800px;
+    background:
+        linear-gradient(
+            to right,
+            #ffd700,
+            transparent
+        );
+
+    margin: 20px 0 25px;
+}
+
+/* =========================================================
+   CONTROLES DE LECTURA
+========================================================= */
+
+.controles-lectura {
+    position: sticky;
+    top: 0;
+
+    z-index: 20;
+
+    max-width: 900px;
+
     margin: 0 auto;
-    padding: 0 20px 20px;
-  }
 
-  .lectura {
-    background: rgba(255, 255, 255, 0.05);
+    padding:
+        10px
+        max(15px, env(safe-area-inset-left))
+        10px
+        max(15px, env(safe-area-inset-right));
+
+    background:
+        rgba(15,25,55,.90);
+
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    border-bottom:
+        1px solid rgba(255,215,0,.18);
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    flex-wrap: wrap;
+}
+
+body.modo-lectura .controles-lectura {
+    background: rgba(255,255,255,0.96);
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+
+.btn-secundario {
+    background: rgba(255,255,255,.06);
+
+    border:
+        1px solid rgba(255,255,255,.15);
+
+    color: #fff;
+
+    border-radius: 30px;
+
+    padding: 9px 15px;
+
+    min-height: 42px;
+
+    font-family: 'Poppins', sans-serif;
+    font-size: .9rem;
+
+    cursor: pointer;
+
+    transition: .2s;
+}
+
+.btn-secundario:active {
+    transform: scale(.96);
+}
+
+.btn-secundario:hover {
+    background: rgba(255,215,0,.15);
+    border-color: rgba(255,215,0,.5);
+}
+
+body.modo-lectura .btn-secundario {
+    background: rgba(0,0,0,.05);
+    border: 1px solid rgba(0,0,0,.1);
+    color: #333;
+}
+
+/* =========================================================
+   CONTENIDO
+========================================================= */
+
+.container {
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 800px;
+
+    margin: 0 auto;
+
+    padding: 20px 20px 20px;
+}
+
+/* =========================================================
+   LECTURAS
+========================================================= */
+
+.lectura {
+    background:
+        rgba(255,255,255,.05);
+
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 215, 0, 0.2);
+
+    border:
+        1px solid rgba(255,215,0,.2);
+
     border-radius: 20px;
+
     padding: 30px 25px;
+
     margin-bottom: 30px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-    transition: all 0.4s ease;
+
+    box-shadow:
+        0 8px 32px rgba(0,0,0,.3);
+
+    transition:
+        all .4s ease;
+
     opacity: 0;
+
     transform: translateY(30px);
-  }
+}
 
-  .lectura.visible {
+.lectura.visible {
     opacity: 1;
-    transform: translateY(0);
-  }
 
-  .lectura:hover {
-    border-color: rgba(255, 215, 0, 0.6);
-    box-shadow: 0 12px 40px rgba(255, 215, 0, 0.2);
-    transform: translateY(-5px);
-  }
+    transform:
+        translateY(0);
+}
 
-  .lectura-titulo {
-    font-family: 'Cormorant Garamond', serif;
+.lectura:hover {
+    border-color:
+        rgba(255,215,0,.6);
+
+    box-shadow:
+        0 12px 40px rgba(255,215,0,.2);
+
+    transform:
+        translateY(-5px);
+}
+
+.lectura-titulo {
+    font-family:
+        'Cormorant Garamond', serif;
+
     font-size: 1.8rem;
+
     color: #ffd700;
+
     margin-bottom: 8px;
+
     display: flex;
+
     align-items: center;
+
     gap: 12px;
-    font-weight: 700;
-  }
 
-  .lectura-titulo .icono {
+    font-weight: 700;
+}
+
+.lectura-titulo .icono {
     font-size: 1.5rem;
-  }
+}
 
-  .lectura-referencia {
-    font-size: 0.95rem;
+.lectura-referencia {
+    font-size: .95rem;
+
     color: #a0d8ff;
+
     font-style: italic;
+
     margin-bottom: 18px;
-    border-left: 3px solid #ffd700;
+
+    border-left:
+        3px solid #ffd700;
+
     padding-left: 12px;
-  }
+}
 
-  .lectura-texto {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.2rem;
-    line-height: 1.8;
-    color: #f0f0f0;
-    text-align: justify;
-  }
+body.modo-lectura .lectura-referencia {
+    color: #2a6a9a;
+}
 
-  .lectura-texto p {
-    margin-bottom: 14px;
-  }
+.lectura-texto {
+    font-family:
+        'Cormorant Garamond', serif;
 
-  .salmo-estrofa {
-    margin-bottom: 18px;
-    padding-left: 15px;
-    border-left: 2px solid rgba(255, 215, 0, 0.4);
-  }
-
-  .salmo-respuesta {
-    font-weight: 700;
-    color: #ffd700;
-    font-style: italic;
     font-size: 1.25rem;
-    display: block;
-    margin-bottom: 20px;
-    text-align: center;
-    padding: 10px;
-    background: rgba(255, 215, 0, 0.08);
-    border-radius: 10px;
-  }
 
-  .evangelio {
-    background: linear-gradient(135deg, rgba(255, 215, 0, 0.08), rgba(255, 255, 255, 0.03));
-    border: 1px solid rgba(255, 215, 0, 0.35);
-  }
+    line-height: 1.8;
 
-  .segunda-lectura {
-    background: linear-gradient(135deg, rgba(160, 216, 255, 0.06), rgba(255, 255, 255, 0.03));
-    border: 1px solid rgba(160, 216, 255, 0.25);
-  }
+    color: #f0f0f0;
 
-  .compartir {
-    text-align: center;
-    margin: 40px 0;
-  }
+    text-align: justify;
 
-  .btn-compartir {
-    background: linear-gradient(135deg, #ffd700, #ffed4e);
-    color: #1a1a2e;
-    border: none;
-    padding: 16px 40px;
-    font-size: 1.05rem;
-    font-weight: 600;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4);
-    font-family: 'Poppins', sans-serif;
-    -webkit-tap-highlight-color: transparent;
-  }
+    transition: font-size .25s ease;
+}
 
-  .btn-compartir:active {
-    transform: scale(0.97);
-  }
+.lectura-texto p {
+    margin-bottom: 14px;
+}
 
-  footer {
-    text-align: center;
-    padding: 30px 20px;
-    color: #a0a0a0;
-    font-size: 0.9rem;
-    position: relative;
-    z-index: 2;
-  }
+/* =========================================================
+   SALMO
+========================================================= */
 
-  footer .corazon {
+.salmo-estrofa {
+    margin-bottom: 18px;
+
+    padding-left: 15px;
+
+    border-left:
+        2px solid rgba(255,215,0,.4);
+}
+
+.salmo-respuesta {
+    font-weight: 700;
+
     color: #ffd700;
-  }
 
-  footer .parroquia-footer {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1rem;
-    color: #ffd700;
     font-style: italic;
-    margin-bottom: 8px;
-    letter-spacing: 1px;
-  }
 
-  .loading {
+    font-size: 1.3rem;
+
+    display: block;
+
+    margin-bottom: 20px;
+
     text-align: center;
-    padding: 60px 20px;
-    position: relative;
-    z-index: 2;
-  }
 
-  .spinner {
+    padding: 10px;
+
+    background:
+        rgba(255,215,0,.08);
+
+    border-radius: 10px;
+}
+
+body.modo-lectura .salmo-respuesta {
+    color: #b8860b;
+    background: rgba(184,134,11,.08);
+}
+
+/* =========================================================
+   EVANGELIO
+========================================================= */
+
+.evangelio {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,215,0,.08),
+            rgba(255,255,255,.03)
+        );
+
+    border:
+        1px solid rgba(255,215,0,.35);
+}
+
+.segunda-lectura {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(160,216,255,.06),
+            rgba(255,255,255,.03)
+        );
+
+    border:
+        1px solid rgba(160,216,255,.25);
+}
+
+/* =========================================================
+   BOTON COMPARTIR
+========================================================= */
+
+.compartir {
+    text-align: center;
+
+    margin: 40px 0;
+}
+
+.btn-compartir {
+    background:
+        linear-gradient(
+            135deg,
+            #ffd700,
+            #ffed4e
+        );
+
+    color: #1a1a2e;
+
+    border: none;
+
+    padding: 16px 40px;
+
+    font-size: 1.05rem;
+
+    font-weight: 600;
+
+    border-radius: 50px;
+
+    cursor: pointer;
+
+    transition: .3s;
+
+    box-shadow:
+        0 5px 20px rgba(255,215,0,.4);
+
+    font-family:
+        'Poppins', sans-serif;
+
+    -webkit-tap-highlight-color:
+        transparent;
+}
+
+.btn-compartir:active {
+    transform: scale(.97);
+}
+
+/* =========================================================
+   INSTALAR APP
+========================================================= */
+
+#instalarApp {
+    display: none;
+}
+
+/* =========================================================
+   LOADING
+========================================================= */
+
+.loading {
+    text-align: center;
+
+    padding: 60px 20px;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+.spinner {
     width: 50px;
     height: 50px;
-    border: 3px solid rgba(255, 215, 0, 0.2);
-    border-top-color: #ffd700;
+
+    border:
+        3px solid rgba(255,215,0,.2);
+
+    border-top-color:
+        #ffd700;
+
     border-radius: 50%;
-    animation: spin 1s linear infinite;
+
+    animation:
+        spin 1s linear infinite;
+
     margin: 0 auto 20px;
-  }
+}
 
-  @keyframes spin {
-    to { transform: rotate(360deg); }
-  }
+@keyframes spin {
 
-  .loading p {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.loading p {
     color: #ffd700;
-    font-family: 'Cormorant Garamond', serif;
+
+    font-family:
+        'Cormorant Garamond', serif;
+
     font-size: 1.2rem;
+
     font-style: italic;
-  }
+}
 
-  @media (max-width: 700px) {
-    header { padding: 25px 18px 5px; }
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+    text-align: center;
+
+    padding: 30px 20px;
+
+    color: #a0a0a0;
+
+    font-size: .9rem;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+footer .corazon {
+    color: #ffd700;
+}
+
+footer .parroquia-footer {
+    font-family:
+        'Cormorant Garamond', serif;
+
+    font-size: 1rem;
+
+    color: #ffd700;
+
+    font-style: italic;
+
+    margin-bottom: 8px;
+
+    letter-spacing: 1px;
+}
+
+body.modo-lectura footer .parroquia-footer {
+    color: #b8860b;
+}
+
+/* =========================================================
+   BARRA INFERIOR TIPO APP
+========================================================= */
+
+.bottom-nav {
+    position: fixed;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    z-index: 50;
+
+    padding:
+        7px
+        max(8px, env(safe-area-inset-left))
+        calc(7px + env(safe-area-inset-bottom))
+        max(8px, env(safe-area-inset-right));
+
+    background:
+        rgba(10,15,35,.94);
+
+    backdrop-filter:
+        blur(14px);
+
+    -webkit-backdrop-filter:
+        blur(14px);
+
+    border-top:
+        1px solid rgba(255,215,0,.2);
+}
+
+body.modo-lectura .bottom-nav {
+    background: rgba(255,255,255,.96);
+    border-top: 1px solid rgba(0,0,0,0.08);
+}
+
+.bottom-nav-inner {
+    max-width: 650px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+}
+
+.nav-item {
+    border: none;
+
+    background: transparent;
+
+    color: #bbb;
+
+    font-family:
+        'Poppins', sans-serif;
+
+    font-size: .72rem;
+
+    padding: 5px 2px;
+
+    cursor: pointer;
+}
+
+.nav-item span {
+    display: block;
+
+    font-size: 1.35rem;
+
+    margin-bottom: 2px;
+}
+
+.nav-item.active {
+    color: #ffd700;
+}
+
+body.modo-lectura .nav-item {
+    color: #666;
+}
+
+body.modo-lectura .nav-item.active {
+    color: #b8860b;
+}
+
+/* =========================================================
+   MOVIL
+========================================================= */
+
+@media (max-width: 700px) {
+
+    header {
+        padding: 25px 18px 5px;
+    }
+
     .header-grid {
-      grid-template-columns: 1fr;
-      gap: 20px;
-      text-align: center;
+        grid-template-columns: 1fr;
+
+        gap: 20px;
+
+        text-align: center;
     }
-    .header-texto { text-align: center; }
-    .cruz-titulo { justify-content: center; gap: 10px; }
+
+    .header-texto {
+        text-align: center;
+    }
+
+    .cruz-titulo {
+        justify-content: center;
+
+        gap: 10px;
+    }
+
     .linea-decorativa {
-      margin: 25px auto 25px;
-      background: linear-gradient(to right, transparent, #ffd700, transparent);
-      width: 180px;
+        margin: 25px auto;
+
+        background:
+            linear-gradient(
+                to right,
+                transparent,
+                #ffd700,
+                transparent
+            );
+
+        width: 180px;
     }
-    .logo-parroquia { width: 190px; height: 190px; }
-    .logo-container::before { inset: -25px; }
-    .nombre-parroquia { font-size: 1.2rem; letter-spacing: 2.5px; margin-bottom: 8px; }
-    .lema-parroquia { font-size: 1.6rem; margin-bottom: 18px; }
-    .cruz { font-size: 2rem; }
-    .titulo { font-size: 2.8rem; line-height: 1.1; }
-    .fecha { font-size: 1.15rem; margin-top: 12px; }
-    .container { padding: 0 15px 20px; }
-    .lectura { padding: 26px 22px; margin-bottom: 25px; border-radius: 18px; }
-    .lectura-titulo { font-size: 1.55rem; gap: 10px; margin-bottom: 10px; }
-    .lectura-titulo .icono { font-size: 1.4rem; }
-    .lectura-referencia { font-size: 1rem; margin-bottom: 16px; padding-left: 10px; }
-    .lectura-texto { font-size: 1.25rem; line-height: 1.85; text-align: left; }
-    .lectura-texto p { margin-bottom: 16px; }
-    .salmo-respuesta { font-size: 1.3rem; padding: 12px 10px; margin-bottom: 22px; }
-    .salmo-estrofa { margin-bottom: 20px; padding-left: 12px; }
-    .btn-compartir { width: 100%; padding: 18px 20px; font-size: 1.1rem; }
-    .compartir { margin: 35px 0 25px; }
-    footer { padding: 25px 18px; font-size: 0.95rem; }
-    footer .parroquia-footer { font-size: 1.05rem; }
-  }
 
-  @media (max-width: 380px) {
-    .logo-parroquia { width: 160px; height: 160px; }
-    .titulo { font-size: 2.4rem; }
-    .lema-parroquia { font-size: 1.4rem; }
-    .lectura { padding: 22px 18px; }
-    .lectura-texto { font-size: 1.15rem; }
-    .lectura-titulo { font-size: 1.4rem; }
-  }
+    .logo-parroquia {
+        width: 190px;
+        height: 190px;
+    }
 
-  @media (min-width: 701px) and (max-width: 900px) {
-    .logo-parroquia { width: 160px; height: 160px; }
-    .titulo { font-size: 2.7rem; }
-  }
+    .logo-container::before {
+        inset: -25px;
+    }
+
+    .nombre-parroquia {
+        font-size: 1.2rem;
+        letter-spacing: 2.5px;
+        margin-bottom: 8px;
+    }
+
+    .lema-parroquia {
+        font-size: 1.6rem;
+        margin-bottom: 18px;
+    }
+
+    .cruz {
+        font-size: 2rem;
+    }
+
+    .titulo {
+        font-size: 2.8rem;
+        line-height: 1.1;
+    }
+
+    .fecha {
+        font-size: 1.15rem;
+        margin-top: 12px;
+    }
+
+    .controles-lectura {
+        gap: 6px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+    }
+
+    .btn-secundario {
+        padding: 8px 12px;
+        font-size: .82rem;
+        min-height: 40px;
+    }
+
+    .container {
+        padding:
+            20px 15px 20px;
+    }
+
+    .lectura {
+        padding: 26px 22px;
+
+        margin-bottom: 25px;
+
+        border-radius: 18px;
+    }
+
+    .lectura-titulo {
+        font-size: 1.55rem;
+
+        gap: 10px;
+
+        margin-bottom: 10px;
+    }
+
+    .lectura-titulo .icono {
+        font-size: 1.4rem;
+    }
+
+    .lectura-referencia {
+        font-size: 1rem;
+
+        margin-bottom: 16px;
+
+        padding-left: 10px;
+    }
+
+    .lectura-texto {
+        font-size: 1.25rem;
+
+        line-height: 1.85;
+
+        text-align: left;
+    }
+
+    .lectura-texto p {
+        margin-bottom: 16px;
+    }
+
+    .salmo-respuesta {
+        font-size: 1.3rem;
+
+        padding: 12px 10px;
+
+        margin-bottom: 22px;
+    }
+
+    .salmo-estrofa {
+        margin-bottom: 20px;
+
+        padding-left: 12px;
+    }
+
+    .btn-compartir {
+        width: 100%;
+
+        padding: 18px 20px;
+
+        font-size: 1.1rem;
+    }
+
+    .compartir {
+        margin: 35px 0 25px;
+    }
+
+    footer {
+        padding: 25px 18px;
+
+        font-size: .95rem;
+    }
+
+    footer .parroquia-footer {
+        font-size: 1.05rem;
+    }
+}
+
+/* =========================================================
+   TELEFONOS PEQUEÑOS
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .logo-parroquia {
+        width: 160px;
+        height: 160px;
+    }
+
+    .titulo {
+        font-size: 2.4rem;
+    }
+
+    .lema-parroquia {
+        font-size: 1.4rem;
+    }
+
+    .lectura {
+        padding: 22px 18px;
+    }
+
+    .lectura-texto {
+        font-size: 1.15rem;
+    }
+
+    .lectura-titulo {
+        font-size: 1.4rem;
+    }
+
+    .btn-secundario {
+        font-size: .75rem;
+        padding: 7px 10px;
+    }
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (min-width: 701px) and (max-width: 900px) {
+
+    .logo-parroquia {
+        width: 160px;
+        height: 160px;
+    }
+
+    .titulo {
+        font-size: 2.7rem;
+    }
+}
+
 </style>
 </head>
+
 <body>
 
+<!-- =======================================================
+     HEADER
+======================================================= -->
+
 <header>
-  <div class="header-grid">
-    <div class="logo-container">
-      <img
-        src="https://i.imgur.com/b4BdXzJ.png"
-        alt="Logo Parroquia Monte Tabor - Pastoral Familiar"
-        class="logo-parroquia"
-        onerror="this.src='https://i.imgur.com/b4BdXzJ.jpg'; this.onerror=null;"
-      >
+
+    <div class="header-grid">
+
+        <div class="logo-container">
+
+            <img
+                src="https://i.imgur.com/b4BdXzJ.png"
+                alt="Logo Parroquia Monte Tabor - Pastoral Familiar"
+                class="logo-parroquia"
+
+                onerror="
+                    this.src='https://i.imgur.com/b4BdXzJ.jpg';
+                    this.onerror=null;
+                "
+            >
+
+        </div>
+
+        <div class="header-texto">
+
+            <div class="nombre-parroquia">
+                Parroquia Monte Tabor
+            </div>
+
+            <div class="lema-parroquia">
+                Pastoral Familiar
+            </div>
+
+            <div class="cruz-titulo">
+
+                <span class="cruz">
+                    ✝
+                </span>
+
+                <h1 class="titulo">
+                    Lecturas del Día
+                </h1>
+
+            </div>
+
+            <p
+                class="fecha"
+                id="fecha">
+            </p>
+
+        </div>
+
     </div>
 
-    <div class="header-texto">
-      <div class="nombre-parroquia">Parroquia Monte Tabor</div>
-      <div class="lema-parroquia">Pastoral Familiar</div>
-      <div class="cruz-titulo">
-        <span class="cruz">✝</span>
-        <h1 class="titulo">Lecturas del Día</h1>
-      </div>
-      <p class="fecha" id="fecha"></p>
-    </div>
-  </div>
-  <div class="linea-decorativa"></div>
+    <div class="linea-decorativa"></div>
+
 </header>
 
-<div class="loading" id="loading">
-  <div class="spinner"></div>
-  <p>Cargando la Palabra de Dios...</p>
+
+<!-- =======================================================
+     CONTROLES DE LECTURA
+======================================================= -->
+
+<div class="controles-lectura">
+
+    <button
+        class="btn-secundario"
+        onclick="disminuirTexto()"
+        aria-label="Disminuir tamaño de letra">
+
+        A−
+
+    </button>
+
+    <button
+        class="btn-secundario"
+        onclick="tamanoNormal()"
+        aria-label="Tamaño normal de letra">
+
+        A
+
+    </button>
+
+    <button
+        class="btn-secundario"
+        onclick="aumentarTexto()"
+        aria-label="Aumentar tamaño de letra">
+
+        A+
+
+    </button>
+
+    <button
+        class="btn-secundario"
+        onclick="modoLectura()"
+        aria-label="Cambiar modo lectura">
+
+        🌙 Modo lectura
+
+    </button>
+
 </div>
 
-<div class="container" id="contenido" style="display:none;">
 
-  <section class="lectura" id="lectura1">
-    <h2 class="lectura-titulo"><span class="icono">📖</span> Primera Lectura</h2>
-    <p class="lectura-referencia" id="ref1">—</p>
-    <div class="lectura-texto" id="texto1"></div>
-  </section>
+<!-- =======================================================
+     LOADING
+======================================================= -->
 
-  <section class="lectura" id="salmo">
-    <h2 class="lectura-titulo"><span class="icono">🎵</span> Salmo Responsorial</h2>
-    <p class="lectura-referencia" id="refSalmo">—</p>
-    <div class="lectura-texto" id="textoSalmo"></div>
-  </section>
+<div
+    class="loading"
+    id="loading">
 
-  <!-- BLOQUE DE SEGUNDA LECTURA (oculto por defecto, solo aparece en domingos/solemnidades) -->
-  <section class="lectura segunda-lectura" id="segundaLectura" style="display:none;">
-    <h2 class="lectura-titulo"><span class="icono">📜</span> Segunda Lectura</h2>
-    <p class="lectura-referencia" id="refSegunda">—</p>
-    <div class="lectura-texto" id="textoSegunda"></div>
-  </section>
+    <div class="spinner"></div>
 
-  <section class="lectura evangelio" id="evangelio">
-    <h2 class="lectura-titulo"><span class="icono">✨</span> Evangelio</h2>
-    <p class="lectura-referencia" id="refEvangelio">—</p>
-    <div class="lectura-texto" id="textoEvangelio"></div>
-  </section>
-
-  <div class="compartir">
-    <button class="btn-compartir" onclick="compartir()">🙏 Compartir la Palabra</button>
-  </div>
+    <p>
+        Cargando la Palabra de Dios...
+    </p>
 
 </div>
+
+
+<!-- =======================================================
+     CONTENIDO
+======================================================= -->
+
+<div
+    class="container"
+    id="contenido"
+    style="display:none;">
+
+
+    <!-- PRIMERA LECTURA -->
+
+    <section
+        class="lectura"
+        id="lectura1">
+
+        <h2 class="lectura-titulo">
+
+            <span class="icono">
+                📖
+            </span>
+
+            Primera Lectura
+
+        </h2>
+
+        <p
+            class="lectura-referencia"
+            id="ref1">
+
+            —
+
+        </p>
+
+        <div
+            class="lectura-texto"
+            id="texto1">
+        </div>
+
+    </section>
+
+
+    <!-- SALMO -->
+
+    <section
+        class="lectura"
+        id="salmo">
+
+        <h2 class="lectura-titulo">
+
+            <span class="icono">
+                🎵
+            </span>
+
+            Salmo Responsorial
+
+        </h2>
+
+        <p
+            class="lectura-referencia"
+            id="refSalmo">
+
+            —
+
+        </p>
+
+        <div
+            class="lectura-texto"
+            id="textoSalmo">
+        </div>
+
+    </section>
+
+
+    <!-- SEGUNDA LECTURA -->
+
+    <section
+        class="lectura segunda-lectura"
+        id="segundaLectura"
+        style="display:none;">
+
+        <h2 class="lectura-titulo">
+
+            <span class="icono">
+                📜
+            </span>
+
+            Segunda Lectura
+
+        </h2>
+
+        <p
+            class="lectura-referencia"
+            id="refSegunda">
+
+            —
+
+        </p>
+
+        <div
+            class="lectura-texto"
+            id="textoSegunda">
+        </div>
+
+    </section>
+
+
+    <!-- EVANGELIO -->
+
+    <section
+        class="lectura evangelio"
+        id="evangelio">
+
+        <h2 class="lectura-titulo">
+
+            <span class="icono">
+                ✨
+            </span>
+
+            Evangelio
+
+        </h2>
+
+        <p
+            class="lectura-referencia"
+            id="refEvangelio">
+
+            —
+
+        </p>
+
+        <div
+            class="lectura-texto"
+            id="textoEvangelio">
+        </div>
+
+    </section>
+
+
+    <!-- COMPARTIR -->
+
+    <div class="compartir">
+
+        <button
+            class="btn-compartir"
+            onclick="compartir()">
+
+            🙏 Compartir la Palabra
+
+        </button>
+
+        <br><br>
+
+        <button
+            class="btn-compartir"
+            id="instalarApp"
+            onclick="instalarAplicacion()">
+
+            📲 Instalar aplicación
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =======================================================
+     FOOTER
+======================================================= -->
 
 <footer>
-  <div class="parroquia-footer">Parroquia Monte Tabor · Pastoral Familiar</div>
-  <div>Con Jesús, José y María, vivimos nuestra alegría ✨</div>
-  <div style="margin-top:10px;">Hecho con <span class="corazon">♥</span> para la gloria de Dios</div>
+
+    <div class="parroquia-footer">
+
+        Parroquia Monte Tabor · Pastoral Familiar
+
+    </div>
+
+    <div>
+
+        Con Jesús, José y María,
+        vivimos nuestra alegría ✨
+
+    </div>
+
+    <div style="margin-top:10px;">
+
+        Hecho con
+        <span class="corazon">
+            ♥
+        </span>
+        para la gloria de Dios
+
+    </div>
+
 </footer>
 
+
+<!-- =======================================================
+     BARRA INFERIOR
+======================================================= -->
+
+<nav class="bottom-nav">
+
+    <div class="bottom-nav-inner">
+
+        <button
+            class="nav-item active"
+            onclick="irAlInicio()">
+
+            <span>📖</span>
+            Lecturas
+
+        </button>
+
+        <button
+            class="nav-item"
+            onclick="irAlEvangelio()">
+
+            <span>✨</span>
+            Evangelio
+
+        </button>
+
+        <button
+            class="nav-item"
+            onclick="compartir()">
+
+            <span>📤</span>
+            Compartir
+
+        </button>
+
+        <button
+            class="nav-item"
+            onclick="modoLectura()">
+
+            <span>🌙</span>
+            Lectura
+
+        </button>
+
+    </div>
+
+</nav>
+
+
 <script>
-  const API_URL = 'https://liturgia.cloudhub.ia.br/v1/liturgia';
 
-  const respaldo = {
+/* =========================================================
+   API
+========================================================= */
+
+const API_URL =
+    'https://liturgia.cloudhub.ia.br/v1/liturgia';
+
+
+/* =========================================================
+   RESPALDO
+========================================================= */
+
+const respaldo = {
+
     primera: {
-      referencia: "Isaías 55, 1-3",
-      texto: `<p>Esto dice el Señor: «Todos ustedes, los que tienen sed, vengan por agua; y los que no tienen dinero, vengan, tomen trigo y coman; vengan, tomen vino y leche, sin pagar nada.</p>
-              <p>¿Por qué gastar dinero en lo que no alimenta y el salario en lo que no sacia? Escúchenme atentos y comerán bien, saborearán platillos suculentos.</p>
-              <p>Presten oído y vengan a mí, escúchenme y vivirán. Haré con ustedes una alianza eterna, cumpliendo las promesas que hice a David».</p>`
+
+        referencia:
+            "Isaías 55, 1-3",
+
+        texto:
+`
+<p>
+Esto dice el Señor: «Todos ustedes,
+los que tienen sed, vengan por agua;
+y los que no tienen dinero, vengan,
+tomen trigo y coman; vengan,
+tomen vino y leche, sin pagar nada.
+</p>
+
+<p>
+¿Por qué gastar dinero en lo que no
+alimenta y el salario en lo que no sacia?
+Escúchenme atentos y comerán bien,
+saborearán platillos suculentos.
+</p>
+
+<p>
+Presten oído y vengan a mí,
+escúchenme y vivirán.
+Haré con ustedes una alianza eterna,
+cumpliendo las promesas que hice a David».
+</p>
+`
     },
+
+
     salmo: {
-      referencia: "Salmo 144",
-      texto: `<div class="salmo-estrofa">
-                <span class="salmo-respuesta">R. El Señor es compasivo y misericordioso.</span>
-                <p>El Señor es compasivo y misericordioso, lento a la ira y rico en clemencia. El Señor es bueno con todos, es cariñoso con todas sus creaturas.</p>
-              </div>
-              <div class="salmo-estrofa">
-                <span class="salmo-respuesta">R. El Señor es compasivo y misericordioso.</span>
-                <p>Que todas tus creaturas te den gracias, Señor, que te bendigan tus fieles; que proclamen la gloria de tu reinado y den a conocer tus maravillas.</p>
-              </div>`
+
+        referencia:
+            "Salmo 144",
+
+        texto:
+`
+<div class="salmo-estrofa">
+
+<span class="salmo-respuesta">
+R. El Señor es compasivo y misericordioso.
+</span>
+
+<p>
+El Señor es compasivo y misericordioso,
+lento a la ira y rico en clemencia.
+El Señor es bueno con todos,
+es cariñoso con todas sus creaturas.
+</p>
+
+</div>
+
+<div class="salmo-estrofa">
+
+<span class="salmo-respuesta">
+R. El Señor es compasivo y misericordioso.
+</span>
+
+<p>
+Que todas tus creaturas te den gracias,
+Señor, que te bendigan tus fieles;
+que proclamen la gloria de tu reinado
+y den a conocer tus maravillas.
+</p>
+
+</div>
+`
     },
+
+
     evangelio: {
-      referencia: "Mateo 14, 13-21",
-      texto: `<p>En aquel tiempo, cuando Jesús oyó que Juan el Bautista había muerto, se fue de allí en una barca, a un lugar solitario y apartado. Al enterarse las gentes, lo siguieron a pie desde las ciudades.</p>
-              <p>Al desembarcar, Jesús vio una multitud, se compadeció de ella y curó a los enfermos. Cuando se hizo tarde, se acercaron sus discípulos a decirle: «Estamos en despoblado y ya es muy tarde. Despide a la gente, para que vayan a los caseríos y compren algo de comer».</p>
-              <p>Jesús les respondió: «No es necesario que se vayan; denles ustedes de comer». Ellos le contestaron: «No tenemos aquí más que cinco panes y dos pescados».</p>
-              <p>Él les dijo: «Tráiganmelos». Luego mandó a la gente que se sentara en la hierba. Tomó los cinco panes y los dos pescados, levantó los ojos al cielo, pronunció la bendición, partió los panes y los dio a los discípulos; y los discípulos, a la gente. Todos comieron hasta saciarse, y con los pedazos que sobraron se llenaron doce canastas.</p>
-              <p><strong>Palabra del Señor. R. Gloria a ti, Señor Jesús.</strong></p>`
+
+        referencia:
+            "Mateo 14, 13-21",
+
+        texto:
+`
+<p>
+En aquel tiempo, cuando Jesús oyó que
+Juan el Bautista había muerto, se fue de
+allí en una barca, a un lugar solitario y
+apartado. Al enterarse las gentes,
+lo siguieron a pie desde las ciudades.
+</p>
+
+<p>
+Al desembarcar, Jesús vio una multitud,
+se compadeció de ella y curó a los
+enfermos.
+</p>
+
+<p>
+Cuando se hizo tarde, se acercaron
+sus discípulos a decirle:
+«Estamos en despoblado y ya es muy tarde.
+Despide a la gente, para que vayan a los
+caseríos y compren algo de comer».
+</p>
+
+<p>
+Jesús les respondió:
+«No es necesario que se vayan;
+denles ustedes de comer».
+</p>
+
+<p>
+Ellos le contestaron:
+«No tenemos aquí más que cinco panes
+y dos pescados».
+</p>
+
+<p>
+Él les dijo:
+«Tráiganmelos».
+</p>
+
+<p>
+Luego mandó a la gente que se sentara
+en la hierba. Tomó los cinco panes y los
+dos pescados, levantó los ojos al cielo,
+pronunció la bendición, partió los panes
+y los dio a los discípulos; y los discípulos,
+a la gente.
+</p>
+
+<p>
+Todos comieron hasta saciarse,
+y con los pedazos que sobraron
+se llenaron doce canastas.
+</p>
+
+<p>
+<strong>
+Palabra del Señor.
+R. Gloria a ti, Señor Jesús.
+</strong>
+</p>
+`
     }
-  };
 
-  const hoy = new Date();
-  const opciones = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-  const fechaTexto = hoy.toLocaleDateString('es-ES', opciones);
-  document.getElementById('fecha').textContent = fechaTexto.charAt(0).toUpperCase() + fechaTexto.slice(1);
+};
 
-  async function cargarLecturas() {
+
+/* =========================================================
+   FORMATO FECHA
+========================================================= */
+
+function actualizarFecha() {
+
+    const opciones = {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    };
+
+    const texto =
+        new Date().toLocaleDateString(
+            'es-ES',
+            opciones
+        );
+
+    document.getElementById('fecha')
+        .textContent =
+        texto.charAt(0).toUpperCase()
+        + texto.slice(1);
+}
+
+
+/* =========================================================
+   CARGAR LECTURAS
+========================================================= */
+
+async function cargarLecturas() {
+
+    document.getElementById('loading')
+        .style.display = 'block';
+
+    document.getElementById('contenido')
+        .style.display = 'none';
+
     try {
-      const respuesta = await fetch(API_URL);
-      if (!respuesta.ok) throw new Error('API no disponible');
-      const data = await respuesta.json();
-      mostrarLecturas(data);
+
+        const respuesta =
+            await fetch(API_URL);
+
+        if (!respuesta.ok)
+            throw new Error(
+                'API no disponible'
+            );
+
+        const data =
+            await respuesta.json();
+
+        mostrarLecturas(data);
+
     } catch (error) {
-      console.warn('API no disponible, usando respaldo.');
-      mostrarLecturas(respaldo);
+
+        console.warn(
+            'API no disponible, usando respaldo.'
+        );
+
+        mostrarLecturas(respaldo);
+
     }
-  }
+}
 
-  function mostrarLecturas(data) {
-    document.getElementById('loading').style.display = 'none';
-    document.getElementById('contenido').style.display = 'block';
 
-    let primera, salmo, segunda, evangelio;
+/* =========================================================
+   MOSTRAR LECTURAS
+========================================================= */
+
+function mostrarLecturas(data) {
+
+    document.getElementById('loading')
+        .style.display = 'none';
+
+    document.getElementById('contenido')
+        .style.display = 'block';
+
+
+    let primera;
+    let salmo;
+    let segunda;
+    let evangelio;
+
 
     if (data.leituras) {
-      primera = {
-        referencia: data.leituras.primeiraLeitura?.referencia || '—',
-        texto: convertirTexto(data.leituras.primeiraLeitura?.texto || '')
-      };
-      salmo = {
-        referencia: data.leituras.salmo?.referencia || '—',
-        texto: convertirSalmo(data.leituras.salmo)
-      };
-      // SEGUNDA LECTURA — solo viene en domingos y solemnidades
-      segunda = {
-        referencia: data.leituras.segundaLeitura?.referencia || '',
-        texto: convertirTexto(data.leituras.segundaLeitura?.texto || '')
-      };
-      evangelio = {
-        referencia: data.leituras.evangelho?.referencia || '—',
-        texto: convertirTexto(data.leituras.evangelho?.texto || '')
-      };
+
+        primera = {
+
+            referencia:
+                data.leituras
+                .primeiraLeitura
+                ?.referencia || '—',
+
+            texto:
+                convertirTexto(
+                    data.leituras
+                    .primeiraLeitura
+                    ?.texto || ''
+                )
+        };
+
+
+        salmo = {
+
+            referencia:
+                data.leituras
+                .salmo
+                ?.referencia || '—',
+
+            texto:
+                convertirSalmo(
+                    data.leituras.salmo
+                )
+        };
+
+
+        segunda = {
+
+            referencia:
+                data.leituras
+                .segundaLeitura
+                ?.referencia || '',
+
+            texto:
+                convertirTexto(
+                    data.leituras
+                    .segundaLeitura
+                    ?.texto || ''
+                )
+        };
+
+
+        evangelio = {
+
+            referencia:
+                data.leituras
+                .evangelho
+                ?.referencia || '—',
+
+            texto:
+                convertirTexto(
+                    data.leituras
+                    .evangelho
+                    ?.texto || ''
+                )
+        };
+
     } else {
-      primera = data.primera;
-      salmo = data.salmo;
-      segunda = { referencia: '', texto: '' };
-      evangelio = data.evangelio;
+
+        primera = data.primera;
+
+        salmo = data.salmo;
+
+        segunda = {
+            referencia: '',
+            texto: ''
+        };
+
+        evangelio =
+            data.evangelio;
     }
 
-    document.getElementById('ref1').textContent = primera.referencia;
-    document.getElementById('texto1').innerHTML = primera.texto;
-    document.getElementById('refSalmo').textContent = salmo.referencia;
-    document.getElementById('textoSalmo').innerHTML = salmo.texto;
-    document.getElementById('refEvangelio').textContent = evangelio.referencia;
-    document.getElementById('textoEvangelio').innerHTML = evangelio.texto;
 
-    // MOSTRAR U OCULTAR SEGUNDA LECTURA
-    const bloqueSegunda = document.getElementById('segundaLectura');
-    if (segunda.referencia && segunda.texto) {
-      document.getElementById('refSegunda').textContent = segunda.referencia;
-      document.getElementById('textoSegunda').innerHTML = segunda.texto;
-      bloqueSegunda.style.display = 'block';
+    document.getElementById('ref1')
+        .textContent =
+        primera.referencia;
+
+    document.getElementById('texto1')
+        .innerHTML =
+        primera.texto;
+
+
+    document.getElementById('refSalmo')
+        .textContent =
+        salmo.referencia;
+
+    document.getElementById('textoSalmo')
+        .innerHTML =
+        salmo.texto;
+
+
+    document.getElementById('refEvangelio')
+        .textContent =
+        evangelio.referencia;
+
+    document.getElementById('textoEvangelio')
+        .innerHTML =
+        evangelio.texto;
+
+
+    const bloqueSegunda =
+        document.getElementById(
+            'segundaLectura'
+        );
+
+
+    if (
+        segunda.referencia &&
+        segunda.texto
+    ) {
+
+        document.getElementById(
+            'refSegunda'
+        ).textContent =
+            segunda.referencia;
+
+        document.getElementById(
+            'textoSegunda'
+        ).innerHTML =
+            segunda.texto;
+
+        bloqueSegunda.style.display =
+            'block';
+
     } else {
-      bloqueSegunda.style.display = 'none';
+
+        bloqueSegunda.style.display =
+            'none';
     }
+
 
     setTimeout(() => {
-      document.querySelectorAll('.lectura').forEach(el => {
-        if (el.style.display !== 'none') el.classList.add('visible');
-      });
+
+        document
+            .querySelectorAll('.lectura')
+            .forEach(el => {
+
+                if (
+                    el.style.display
+                    !== 'none'
+                ) {
+
+                    el.classList.add(
+                        'visible'
+                    );
+                }
+
+            });
+
     }, 100);
-  }
 
-  function convertirTexto(texto) {
-    if (!texto) return '<p>—</p>';
+}
+
+
+/* =========================================================
+   CONVERTIR TEXTO
+========================================================= */
+
+function convertirTexto(texto) {
+
+    if (!texto)
+        return '<p>—</p>';
+
     return texto
-      .split(/\n\s*\n|\n/)
-      .filter(p => p.trim())
-      .map(p => `<p>${p.trim()}</p>`)
-      .join('');
-  }
 
-  function convertirSalmo(salmo) {
-    if (!salmo) return '<p>—</p>';
+        .split(/\n\s*\n|\n/)
+
+        .filter(p => p.trim())
+
+        .map(
+            p =>
+                `<p>${p.trim()}</p>`
+        )
+
+        .join('');
+}
+
+
+/* =========================================================
+   CONVERTIR SALMO
+========================================================= */
+
+function convertirSalmo(salmo) {
+
+    if (!salmo)
+        return '<p>—</p>';
+
     let html = '';
+
+
     if (salmo.resposta) {
-      html += `<span class="salmo-respuesta">R. ${salmo.resposta}</span>`;
+
+        html +=
+        `<span class="salmo-respuesta">
+            R. ${salmo.resposta}
+        </span>`;
     }
-    if (salmo.estrofe && Array.isArray(salmo.estrofe)) {
-      salmo.estrofe.forEach(estrofa => {
-        html += `<div class="salmo-estrofa"><p>${estrofa}</p></div>`;
-      });
+
+
+    if (
+        salmo.estrofe &&
+        Array.isArray(
+            salmo.estrofe
+        )
+    ) {
+
+        salmo.estrofe
+            .forEach(estrofa => {
+
+                html +=
+                `<div class="salmo-estrofa">
+                    <p>${estrofa}</p>
+                </div>`;
+
+            });
+
     } else if (salmo.texto) {
-      html += convertirTexto(salmo.texto);
+
+        html +=
+            convertirTexto(
+                salmo.texto
+            );
     }
+
+
     return html || '<p>—</p>';
-  }
+}
 
-  function compartir() {
-    if (navigator.share) {
-      navigator.share({
-        title: 'Lecturas del Día ✝️ | Parroquia Monte Tabor',
-        text: 'Comparte la Palabra de Dios 🙏',
-        url: window.location.href
-      });
-    } else {
-      navigator.clipboard.writeText(window.location.href);
-      alert('¡Enlace copiado! Compártelo con tus hermanos 🙏');
+
+/* =========================================================
+   IR AL EVANGELIO
+========================================================= */
+
+function irAlEvangelio() {
+
+    document
+        .getElementById('evangelio')
+        .scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+}
+
+
+/* =========================================================
+   IR AL INICIO
+========================================================= */
+
+function irAlInicio() {
+
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
+
+
+/* =========================================================
+   TAMAÑO DE TEXTO
+========================================================= */
+
+let tamanoTexto = 1.25;
+
+
+function aplicarTamanoTexto() {
+
+    document
+        .querySelectorAll(
+            '.lectura-texto'
+        )
+        .forEach(elemento => {
+
+            elemento.style.fontSize =
+                tamanoTexto + 'rem';
+
+        });
+}
+
+
+function aumentarTexto() {
+
+    if (tamanoTexto < 1.8) {
+
+        tamanoTexto += .1;
+
+        aplicarTamanoTexto();
     }
-  }
+}
 
-  cargarLecturas();
+
+function disminuirTexto() {
+
+    if (tamanoTexto > 1) {
+
+        tamanoTexto -= .1;
+
+        aplicarTamanoTexto();
+    }
+}
+
+
+function tamanoNormal() {
+
+    tamanoTexto = 1.25;
+
+    aplicarTamanoTexto();
+}
+
+
+/* =========================================================
+   MODO LECTURA
+========================================================= */
+
+function modoLectura() {
+
+    document.body
+        .classList
+        .toggle('modo-lectura');
+
+}
+
+
+/* =========================================================
+   COMPARTIR
+========================================================= */
+
+function compartir() {
+
+    if (navigator.share) {
+
+        navigator.share({
+
+            title:
+                'Lecturas del Día ✝️ | Parroquia Monte Tabor',
+
+            text:
+                'Comparte la Palabra de Dios 🙏',
+
+            url:
+                window.location.href
+
+        });
+
+    } else {
+
+        navigator.clipboard
+            .writeText(
+                window.location.href
+            );
+
+        alert(
+            '¡Enlace copiado! Compártelo con tus hermanos 🙏'
+        );
+    }
+}
+
+
+/* =========================================================
+   INSTALACION PWA
+========================================================= */
+
+let deferredPrompt = null;
+
+
+window.addEventListener(
+    'beforeinstallprompt',
+    event => {
+
+        event.preventDefault();
+
+        deferredPrompt = event;
+
+        const boton =
+            document.getElementById(
+                'instalarApp'
+            );
+
+        boton.style.display =
+            'inline-block';
+    }
+);
+
+
+async function instalarAplicacion() {
+
+    if (!deferredPrompt)
+        return;
+
+    deferredPrompt.prompt();
+
+    await deferredPrompt.userChoice;
+
+    deferredPrompt = null;
+
+    document.getElementById(
+        'instalarApp'
+    ).style.display =
+        'none';
+}
+
+
+/* =========================================================
+   INICIO
+========================================================= */
+
+actualizarFecha();
+
+cargarLecturas();
+
 </script>
 
 </body>
