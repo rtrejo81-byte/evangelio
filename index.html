@@ -42,7 +42,6 @@
     50% { opacity: 0.6; }
   }
 
-  /* ===== HEADER ===== */
   header {
     position: relative;
     z-index: 2;
@@ -260,6 +259,11 @@
     border: 1px solid rgba(255, 215, 0, 0.35);
   }
 
+  .segunda-lectura {
+    background: linear-gradient(135deg, rgba(160, 216, 255, 0.06), rgba(255, 255, 255, 0.03));
+    border: 1px solid rgba(160, 216, 255, 0.25);
+  }
+
   .compartir {
     text-align: center;
     margin: 40px 0;
@@ -334,182 +338,54 @@
     font-style: italic;
   }
 
-  /* ============================================
-     RESPONSIVE — MOBILE FIRST
-     Optimizado para celulares (donde se usa el QR)
-     ============================================ */
   @media (max-width: 700px) {
-    /* Header en una sola columna, todo centrado */
-    header {
-      padding: 25px 18px 5px;
-    }
-
+    header { padding: 25px 18px 5px; }
     .header-grid {
       grid-template-columns: 1fr;
       gap: 20px;
       text-align: center;
     }
-
-    .header-texto {
-      text-align: center;
-    }
-
-    .cruz-titulo {
-      justify-content: center;
-      gap: 10px;
-    }
-
+    .header-texto { text-align: center; }
+    .cruz-titulo { justify-content: center; gap: 10px; }
     .linea-decorativa {
       margin: 25px auto 25px;
       background: linear-gradient(to right, transparent, #ffd700, transparent);
       width: 180px;
     }
-
-    /* Logo más grande en celular */
-    .logo-parroquia {
-      width: 190px;
-      height: 190px;
-    }
-
-    .logo-container::before {
-      inset: -25px;
-    }
-
-    /* Textos más grandes y legibles */
-    .nombre-parroquia {
-      font-size: 1.2rem;
-      letter-spacing: 2.5px;
-      margin-bottom: 8px;
-    }
-
-    .lema-parroquia {
-      font-size: 1.6rem;
-      margin-bottom: 18px;
-    }
-
-    .cruz {
-      font-size: 2rem;
-    }
-
-    .titulo {
-      font-size: 2.8rem;
-      line-height: 1.1;
-    }
-
-    .fecha {
-      font-size: 1.15rem;
-      margin-top: 12px;
-    }
-
-    /* Tarjetas de lecturas más cómodas */
-    .container {
-      padding: 0 15px 20px;
-    }
-
-    .lectura {
-      padding: 26px 22px;
-      margin-bottom: 25px;
-      border-radius: 18px;
-    }
-
-    .lectura-titulo {
-      font-size: 1.55rem;
-      gap: 10px;
-      margin-bottom: 10px;
-    }
-
-    .lectura-titulo .icono {
-      font-size: 1.4rem;
-    }
-
-    .lectura-referencia {
-      font-size: 1rem;
-      margin-bottom: 16px;
-      padding-left: 10px;
-    }
-
-    /* Texto de lectura MÁS GRANDE para leer cómodo */
-    .lectura-texto {
-      font-size: 1.25rem;
-      line-height: 1.85;
-      text-align: left;
-    }
-
-    .lectura-texto p {
-      margin-bottom: 16px;
-    }
-
-    .salmo-respuesta {
-      font-size: 1.3rem;
-      padding: 12px 10px;
-      margin-bottom: 22px;
-    }
-
-    .salmo-estrofa {
-      margin-bottom: 20px;
-      padding-left: 12px;
-    }
-
-    /* Botón compartir full-width y más grande */
-    .btn-compartir {
-      width: 100%;
-      padding: 18px 20px;
-      font-size: 1.1rem;
-    }
-
-    .compartir {
-      margin: 35px 0 25px;
-    }
-
-    /* Footer más legible */
-    footer {
-      padding: 25px 18px;
-      font-size: 0.95rem;
-    }
-
-    footer .parroquia-footer {
-      font-size: 1.05rem;
-    }
+    .logo-parroquia { width: 190px; height: 190px; }
+    .logo-container::before { inset: -25px; }
+    .nombre-parroquia { font-size: 1.2rem; letter-spacing: 2.5px; margin-bottom: 8px; }
+    .lema-parroquia { font-size: 1.6rem; margin-bottom: 18px; }
+    .cruz { font-size: 2rem; }
+    .titulo { font-size: 2.8rem; line-height: 1.1; }
+    .fecha { font-size: 1.15rem; margin-top: 12px; }
+    .container { padding: 0 15px 20px; }
+    .lectura { padding: 26px 22px; margin-bottom: 25px; border-radius: 18px; }
+    .lectura-titulo { font-size: 1.55rem; gap: 10px; margin-bottom: 10px; }
+    .lectura-titulo .icono { font-size: 1.4rem; }
+    .lectura-referencia { font-size: 1rem; margin-bottom: 16px; padding-left: 10px; }
+    .lectura-texto { font-size: 1.25rem; line-height: 1.85; text-align: left; }
+    .lectura-texto p { margin-bottom: 16px; }
+    .salmo-respuesta { font-size: 1.3rem; padding: 12px 10px; margin-bottom: 22px; }
+    .salmo-estrofa { margin-bottom: 20px; padding-left: 12px; }
+    .btn-compartir { width: 100%; padding: 18px 20px; font-size: 1.1rem; }
+    .compartir { margin: 35px 0 25px; }
+    footer { padding: 25px 18px; font-size: 0.95rem; }
+    footer .parroquia-footer { font-size: 1.05rem; }
   }
 
-  /* Celulares muy pequeños (iPhone SE, etc.) */
   @media (max-width: 380px) {
-    .logo-parroquia {
-      width: 160px;
-      height: 160px;
-    }
-
-    .titulo {
-      font-size: 2.4rem;
-    }
-
-    .lema-parroquia {
-      font-size: 1.4rem;
-    }
-
-    .lectura {
-      padding: 22px 18px;
-    }
-
-    .lectura-texto {
-      font-size: 1.15rem;
-    }
-
-    .lectura-titulo {
-      font-size: 1.4rem;
-    }
+    .logo-parroquia { width: 160px; height: 160px; }
+    .titulo { font-size: 2.4rem; }
+    .lema-parroquia { font-size: 1.4rem; }
+    .lectura { padding: 22px 18px; }
+    .lectura-texto { font-size: 1.15rem; }
+    .lectura-titulo { font-size: 1.4rem; }
   }
 
-  /* Tablets y pantallas medianas */
   @media (min-width: 701px) and (max-width: 900px) {
-    .logo-parroquia {
-      width: 160px;
-      height: 160px;
-    }
-
-    .titulo {
-      font-size: 2.7rem;
-    }
+    .logo-parroquia { width: 160px; height: 160px; }
+    .titulo { font-size: 2.7rem; }
   }
 </style>
 </head>
@@ -556,6 +432,13 @@
     <h2 class="lectura-titulo"><span class="icono">🎵</span> Salmo Responsorial</h2>
     <p class="lectura-referencia" id="refSalmo">—</p>
     <div class="lectura-texto" id="textoSalmo"></div>
+  </section>
+
+  <!-- BLOQUE DE SEGUNDA LECTURA (oculto por defecto, solo aparece en domingos/solemnidades) -->
+  <section class="lectura segunda-lectura" id="segundaLectura" style="display:none;">
+    <h2 class="lectura-titulo"><span class="icono">📜</span> Segunda Lectura</h2>
+    <p class="lectura-referencia" id="refSegunda">—</p>
+    <div class="lectura-texto" id="textoSegunda"></div>
   </section>
 
   <section class="lectura evangelio" id="evangelio">
@@ -628,7 +511,7 @@
     document.getElementById('loading').style.display = 'none';
     document.getElementById('contenido').style.display = 'block';
 
-    let primera, salmo, evangelio;
+    let primera, salmo, segunda, evangelio;
 
     if (data.leituras) {
       primera = {
@@ -639,6 +522,11 @@
         referencia: data.leituras.salmo?.referencia || '—',
         texto: convertirSalmo(data.leituras.salmo)
       };
+      // SEGUNDA LECTURA — solo viene en domingos y solemnidades
+      segunda = {
+        referencia: data.leituras.segundaLeitura?.referencia || '',
+        texto: convertirTexto(data.leituras.segundaLeitura?.texto || '')
+      };
       evangelio = {
         referencia: data.leituras.evangelho?.referencia || '—',
         texto: convertirTexto(data.leituras.evangelho?.texto || '')
@@ -646,6 +534,7 @@
     } else {
       primera = data.primera;
       salmo = data.salmo;
+      segunda = { referencia: '', texto: '' };
       evangelio = data.evangelio;
     }
 
@@ -656,8 +545,20 @@
     document.getElementById('refEvangelio').textContent = evangelio.referencia;
     document.getElementById('textoEvangelio').innerHTML = evangelio.texto;
 
+    // MOSTRAR U OCULTAR SEGUNDA LECTURA
+    const bloqueSegunda = document.getElementById('segundaLectura');
+    if (segunda.referencia && segunda.texto) {
+      document.getElementById('refSegunda').textContent = segunda.referencia;
+      document.getElementById('textoSegunda').innerHTML = segunda.texto;
+      bloqueSegunda.style.display = 'block';
+    } else {
+      bloqueSegunda.style.display = 'none';
+    }
+
     setTimeout(() => {
-      document.querySelectorAll('.lectura').forEach(el => el.classList.add('visible'));
+      document.querySelectorAll('.lectura').forEach(el => {
+        if (el.style.display !== 'none') el.classList.add('visible');
+      });
     }, 100);
   }
 
