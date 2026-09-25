@@ -2,11 +2,14 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<meta name="theme-color" content="#1a1a2e">
 <title>Lecturas del Día ✝️ | Parroquia Monte Tabor</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { -webkit-text-size-adjust: 100%; }
 
   body {
     font-family: 'Poppins', sans-serif;
@@ -31,6 +34,7 @@
     opacity: 0.4;
     animation: twinkle 6s ease-in-out infinite;
     z-index: 0;
+    pointer-events: none;
   }
 
   @keyframes twinkle {
@@ -38,11 +42,11 @@
     50% { opacity: 0.6; }
   }
 
-  /* ===== HEADER CON LOGO A UN LADO ===== */
+  /* ===== HEADER ===== */
   header {
     position: relative;
     z-index: 2;
-    padding: 40px 30px 20px;
+    padding: 30px 20px 10px;
     max-width: 900px;
     margin: 0 auto;
   }
@@ -60,7 +64,6 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
-  /* Contenedor del logo */
   .logo-container {
     position: relative;
     display: flex;
@@ -69,7 +72,6 @@
     flex-shrink: 0;
   }
 
-  /* Halo dorado de fondo */
   .logo-container::before {
     content: '';
     position: absolute;
@@ -85,12 +87,10 @@
     50% { transform: scale(1.15); opacity: 1; }
   }
 
-  /* Imagen del logo con mezcla de fondo */
   .logo-parroquia {
     width: 170px;
     height: 170px;
     object-fit: contain;
-    /* MODO DE MEZCLA: integra el logo con el fondo oscuro */
     mix-blend-mode: screen;
     filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.5));
     transition: transform 0.5s ease, filter 0.5s ease;
@@ -101,7 +101,6 @@
     filter: drop-shadow(0 0 25px rgba(255, 215, 0, 0.9));
   }
 
-  /* Bloque de texto a la derecha */
   .header-texto {
     text-align: left;
   }
@@ -270,19 +269,19 @@
     background: linear-gradient(135deg, #ffd700, #ffed4e);
     color: #1a1a2e;
     border: none;
-    padding: 15px 35px;
-    font-size: 1rem;
+    padding: 16px 40px;
+    font-size: 1.05rem;
     font-weight: 600;
     border-radius: 50px;
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4);
     font-family: 'Poppins', sans-serif;
+    -webkit-tap-highlight-color: transparent;
   }
 
-  .btn-compartir:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 30px rgba(255, 215, 0, 0.6);
+  .btn-compartir:active {
+    transform: scale(0.97);
   }
 
   footer {
@@ -335,23 +334,182 @@
     font-style: italic;
   }
 
-  /* ===== RESPONSIVE ===== */
+  /* ============================================
+     RESPONSIVE — MOBILE FIRST
+     Optimizado para celulares (donde se usa el QR)
+     ============================================ */
   @media (max-width: 700px) {
+    /* Header en una sola columna, todo centrado */
+    header {
+      padding: 25px 18px 5px;
+    }
+
     .header-grid {
       grid-template-columns: 1fr;
-      gap: 15px;
+      gap: 20px;
       text-align: center;
     }
-    .header-texto { text-align: center; }
-    .cruz-titulo { justify-content: center; }
-    .linea-decorativa { margin: 20px auto 30px; }
-    .logo-parroquia { width: 140px; height: 140px; }
-    .titulo { font-size: 2.4rem; }
-    .nombre-parroquia { font-size: 1rem; letter-spacing: 2px; }
-    .lema-parroquia { font-size: 1.3rem; }
-    .lectura { padding: 22px 18px; }
-    .lectura-titulo { font-size: 1.5rem; }
-    .lectura-texto { font-size: 1.1rem; }
+
+    .header-texto {
+      text-align: center;
+    }
+
+    .cruz-titulo {
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .linea-decorativa {
+      margin: 25px auto 25px;
+      background: linear-gradient(to right, transparent, #ffd700, transparent);
+      width: 180px;
+    }
+
+    /* Logo más grande en celular */
+    .logo-parroquia {
+      width: 190px;
+      height: 190px;
+    }
+
+    .logo-container::before {
+      inset: -25px;
+    }
+
+    /* Textos más grandes y legibles */
+    .nombre-parroquia {
+      font-size: 1.2rem;
+      letter-spacing: 2.5px;
+      margin-bottom: 8px;
+    }
+
+    .lema-parroquia {
+      font-size: 1.6rem;
+      margin-bottom: 18px;
+    }
+
+    .cruz {
+      font-size: 2rem;
+    }
+
+    .titulo {
+      font-size: 2.8rem;
+      line-height: 1.1;
+    }
+
+    .fecha {
+      font-size: 1.15rem;
+      margin-top: 12px;
+    }
+
+    /* Tarjetas de lecturas más cómodas */
+    .container {
+      padding: 0 15px 20px;
+    }
+
+    .lectura {
+      padding: 26px 22px;
+      margin-bottom: 25px;
+      border-radius: 18px;
+    }
+
+    .lectura-titulo {
+      font-size: 1.55rem;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .lectura-titulo .icono {
+      font-size: 1.4rem;
+    }
+
+    .lectura-referencia {
+      font-size: 1rem;
+      margin-bottom: 16px;
+      padding-left: 10px;
+    }
+
+    /* Texto de lectura MÁS GRANDE para leer cómodo */
+    .lectura-texto {
+      font-size: 1.25rem;
+      line-height: 1.85;
+      text-align: left;
+    }
+
+    .lectura-texto p {
+      margin-bottom: 16px;
+    }
+
+    .salmo-respuesta {
+      font-size: 1.3rem;
+      padding: 12px 10px;
+      margin-bottom: 22px;
+    }
+
+    .salmo-estrofa {
+      margin-bottom: 20px;
+      padding-left: 12px;
+    }
+
+    /* Botón compartir full-width y más grande */
+    .btn-compartir {
+      width: 100%;
+      padding: 18px 20px;
+      font-size: 1.1rem;
+    }
+
+    .compartir {
+      margin: 35px 0 25px;
+    }
+
+    /* Footer más legible */
+    footer {
+      padding: 25px 18px;
+      font-size: 0.95rem;
+    }
+
+    footer .parroquia-footer {
+      font-size: 1.05rem;
+    }
+  }
+
+  /* Celulares muy pequeños (iPhone SE, etc.) */
+  @media (max-width: 380px) {
+    .logo-parroquia {
+      width: 160px;
+      height: 160px;
+    }
+
+    .titulo {
+      font-size: 2.4rem;
+    }
+
+    .lema-parroquia {
+      font-size: 1.4rem;
+    }
+
+    .lectura {
+      padding: 22px 18px;
+    }
+
+    .lectura-texto {
+      font-size: 1.15rem;
+    }
+
+    .lectura-titulo {
+      font-size: 1.4rem;
+    }
+  }
+
+  /* Tablets y pantallas medianas */
+  @media (min-width: 701px) and (max-width: 900px) {
+    .logo-parroquia {
+      width: 160px;
+      height: 160px;
+    }
+
+    .titulo {
+      font-size: 2.7rem;
+    }
   }
 </style>
 </head>
@@ -359,7 +517,6 @@
 
 <header>
   <div class="header-grid">
-    <!-- LOGO A LA IZQUIERDA -->
     <div class="logo-container">
       <img
         src="https://i.imgur.com/b4BdXzJ.png"
@@ -369,7 +526,6 @@
       >
     </div>
 
-    <!-- TEXTO A LA DERECHA -->
     <div class="header-texto">
       <div class="nombre-parroquia">Parroquia Monte Tabor</div>
       <div class="lema-parroquia">Pastoral Familiar</div>
